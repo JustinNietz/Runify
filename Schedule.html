@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<!--Until you figure out how to print cookies on multiple html pages, use one html page -->
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="project.js"></script>
+    <link rel="stylesheet" type="text/css" href="project.css"> <!--External Style -->
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+
+    <style>
+
+     th {
+       text-align: center;
+       color: azure;
+       font-size: 120%;
+     }
+
+    </style>
+  </head>
+
+<script>
+  $(document).ready(function(){
+
+    if(localStorage.getItem('total')) {
+      $('#total').html(localStorage.getItem('total'));
+    }
+      
+
+    if(localStorage.getItem('total2')) {
+      $('#total2').html(localStorage.getItem('total2'));
+    }
+
+    if(localStorage.getItem('total3')) {
+      $('#total3').html(localStorage.getItem('total3'));
+    }
+
+
+    if(localStorage.getItem('total4')) {
+      $('#total4').html(localStorage.getItem('total4'));
+    }
+
+
+    if(localStorage.getItem('total5')) {
+      $('#total5').html(localStorage.getItem('total5'));
+    }
+
+    if(localStorage.getItem('daysOutput')) {
+      $('#daysOutput').html(localStorage.getItem('daysOutput'));
+    }
+      
+    if(localStorage.getItem('minutesOutput')) {
+      $('#minutesOutput').html(localStorage.getItem('minutesOutput'));
+    }
+
+    if(localStorage.getItem('milesOutput')) {
+      $('#milesOutput').html(localStorage.getItem('milesOutput'));
+    }
+});
+</script>
+
+<body>
+
+<!-- Navigation Bar -->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="Home.html"><span class="glyphicon glyphicon-home"></span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+      <li><a href="About.html">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Container for all information -->
+
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h2 style="color: azure" id="daysOutput"></h2>
+    <hr>
+    <table style="width:100%">
+      <tr>
+        <th id="milesOutput"></th>
+        <th id="minutesOutput"></th>
+      </tr>
+    </table>
+    <p id="milesOutput"></p>
+    <p id="minutesOutput"></p>
+    <hr>
+    <table style="width:100%">
+      <tr>
+        <th id="total"></th>
+        <th id="total2"></th>
+        <th id="total3"></th>
+        <th id="total4"></th>
+        <th id="total5"></th>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+  <a href="MusicPlaylist.html"><button>To info</button></a>
+</div>
+<div class="col-sm-4"></div>
+</body>
+</html>

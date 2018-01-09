@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Runify</title>    
+    <meta charset = "UTF-8">
+    <meta name="description" content="Caculate music times and the length of your runs to build a robust running schedule for you. It will also save any music you input, in case you forget the name.">
+    <meta name="keywords" content="Music, Running, Schedule">  
+    <meta name="author" content="Justin Nietzer"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!--User's visible area of a web page-->
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="project.js"></script>
+   <link rel="stylesheet" type="text/css" href="project.css"> <!--External Style -->
+   <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+   <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+
+   <style>
+
+#parent {
+  padding: 5% 0;
+}
+
+#child {
+  padding: 15% 0;
+}
+
+    #bg {
+      position: fixed; 
+      top: -50%; 
+      left: -50%; 
+      width: 200%; 
+      height: 200%;
+      z-index: -1;
+    }
+
+   #bg img {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0; 
+    margin: auto; 
+    min-width: 50%;
+    min-height: 50%;
+  }
+
+  @media screen and (max-width: 1024px) { /* Specific to this particular image */
+    img.bg {
+      left: 50%;
+      margin-left: -512px;   /* 50% */
+    }
+  }
+   </style>
+</head>
+<body>
+<div id="bg">
+  <img src="C:/Users/justi/Desktop/Project/Project/Runner-Exercise-Run-Fitness.jpg" alt="">
+</div>
+
+<!-- Navigation Bar -->
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span> 
+        </button>
+        <a class="navbar-brand" href="Home.html"><span class="glyphicon glyphicon-home"></span></a>
+      </div>
+     <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+        <li><a href="About.html">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+     </div>
+    </div>
+  </nav>
+
+<!-- Main Home Page -->
+<div id="parent jumbotron">
+    <div id="child" ><h1 style="color: azure">Runify</h1>
+      <p style="color: azure"><b>Using Music and Technology to create a more complete running experience.</b></p>    
+      <button type="button" onclick="window.location.href='MusicPlaylist.html'"class="btn btn-primary"><span class="	glyphicon glyphicon-music"></span> Get Started!</button>
+    </div>
+</div>
+<!--
+<div class="container-fluid text-center">  
+
+    <h1>Runify</h1>
+    <p style="color: black">Using Music and technology to create a more complete Running experience.</p> 
+  <div class="container-fluid">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <button type="button" onclick="window.location.href='MusicPlaylist.html'"class="btn btn-primary"><span class="	glyphicon glyphicon-music"></span> Get Started!</button>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</div>
+-->
+</body>
+</html>

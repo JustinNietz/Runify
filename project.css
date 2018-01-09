@@ -1,0 +1,77 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+             
+/* To customize the Google Custom Search button */
+.gsc-control-cse .gsc-table-result {
+	font-family : inherit;
+}
+
+.gsc-control-cse .gsc-input-box {
+	height : inherit;
+} 
+
+.cse .gsc-control-cse,
+.gsc-control-cse {
+  background-color: transparent !important;
+}
+
+input.gsc-input,
+.gsc-input-box,
+.gsc-input-box-hover,
+.gsc-input-box-focus,
+.gsc-search-button, input.gsc-search-button-v2 {
+  box-sizing  : content-box;
+	line-height : normal;
+	margin-top  : 0px;
+}
+
+/* For general font and background info */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Corben', Georgia, Times, serif;
+  text-align: center;
+}
+
+p, div {
+  font-family: 'Nobile', Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+p {
+  color:azure;
+}
+
+body {
+  background-image: url("C:/Users/justi/Desktop/Project/Project/escheresque_ste.png");
+}
+
+
+.jumbotron {
+  background-color: rgb(107, 106, 110);
+}
+
+/* For Song options being hidden and shown */
+#panel2, .flip {
+  
+  margin: auto;
+}
+
+#panel2 {
+  display: none;
+}
+
+#panel3 {
+  display: none;
+}
+
+#panel4 {
+  display: none;
+}
+
+#panel5 {
+  display: none;
+}
+ 
+
