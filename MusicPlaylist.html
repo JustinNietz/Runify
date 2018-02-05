@@ -5,13 +5,32 @@
 <!-- All style Sheets -->
     <meta name="viewport" content="width=device-width, initial-scale=1"> <!--User's visible area of a web page-->
     <script src="project.js"></script> <!--External js -->
+    <script src="show.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- JQuery --> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"><!-- Bootstrap CSS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
     <link rel="stylesheet" type="text/css" href="project.css"> <!--External CSStyle -->   
     <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css"> <!-- Google Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
- 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+      google.charts.load('current', {'packages':['corechart']}); //loading in google pie chart
+      google.charts.setOnLoadCallback(drawChart);
+    </script>
+
+  
+   <style>
+
+
+      .cookieFont {
+         font-size: 120%;
+      }
+
+      p {
+         font-size: 130%;
+      }
+
+    </style>
   </head>
 
 <body>
@@ -26,7 +45,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span> 
         </button>
-        <a class="navbar-brand" href="Home.html"><span class="glyphicon glyphicon-home"></span></a>
+        <a class="navbar-brand" href="Login.html"><span class="glyphicon glyphicon-home"></span></a>
       </div>
      <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
@@ -44,112 +63,7 @@
 
 $(document).ready(function(){
 
-  $('#saveCookiesSong').click( function() {  
-    $('#form'); // to reset the form completely if chosen
-    var todos = $('#total').html(); //for saving to local storage
-    localStorage.setItem('total', todos);
-    return false; // so form does not submit and reloads page
-  });
-
-  $('#saveCookiesSong2').click( function() {
-    $('#form2');
-    var todos = $('#total2').html();
-    localStorage.setItem('total2', todos);
-    return false;
-  });
-
-  $('#saveCookiesSong3').click( function() {
-    $('#form3');
-    var todos = $('#total3').html();
-    localStorage.setItem('total3', todos);
-    return false;
-  });
-
-  $('#saveCookiesSong4').click( function() {
-    $('#form4');
-    var todos = $('#total4').html();
-    localStorage.setItem('total4', todos);
-    return false;
-  });
-
-  $('#saveCookiesSong5').click( function() {
-    $('#form5');
-    var todos = $('#total5').html();
-    localStorage.setItem('total5', todos);
-    return false;
-  });
-
-  $('#saveCookiesDay').click( function() {
-    var todos = $('#daysOutput').html();
-    localStorage.setItem('daysOutput', todos);
-    return false;
-  });
-
-  $('#saveCookiesMiles').click( function() {
-    var todos = $('#milesOutput').html();
-    localStorage.setItem('milesOutput', todos);
-    return false;
-  });
-
-  $('#saveCookiesMinutesTotal').click( function() {
-    var todos = $('#minutesOutput').html();
-    localStorage.setItem('minutesOutput', todos);
-    return false;
-  });
-
-// JQuery to check local storage for values
-
-  if(localStorage.getItem('total')) { // if there is a value, save to an id
-    $('#total').html(localStorage.getItem('total'));
-  }
-      
-  if(localStorage.getItem('total2')) {
-    $('#total2').html(localStorage.getItem('total2'));
-  }
-
-  if(localStorage.getItem('total3')) {
-    $('#total3').html(localStorage.getItem('total3'));
-  }
-  
-  if(localStorage.getItem('total4')) {
-    $('#total4').html(localStorage.getItem('total4'));
-  }
-
-  if(localStorage.getItem('total5')) {
-    $('#total5').html(localStorage.getItem('total5'));
-  }      
-
-  if(localStorage.getItem('daysOutput')) {
-    $('#daysOutput').html(localStorage.getItem('daysOutput'));
-  }
-      
-  if(localStorage.getItem('minutesOutput')) {
-    $('#minutesOutput').html(localStorage.getItem('minutesOutput'));
-  }
-
-  if(localStorage.getItem('milesOutput')) {
-    $('#milesOutput').html(localStorage.getItem('milesOutput'));
-  }
-
 // JQuery for clearing cookies
-
-  $('#clearAllSongs').click( function() { //Clearing song choices only
-    window.localStorage.removeItem('total');
-    window.localStorage.removeItem('total2');
-    window.localStorage.removeItem('total3');
-    window.localStorage.removeItem('total4');
-    window.localStorage.removeItem('total5');
-    location.reload();
-    return false;
-  });   
-
-  $('#clearAllInfo').click( function() { //clearing information only
-    window.localStorage.removeItem('daysOutput');
-    window.localStorage.removeItem('minutesOutput');
-    window.localStorage.removeItem('milesOutput');
-    location.reload();
-    return false;
-  });   
 
   $('#clearAll').click( function() { //Clearing all information on the page
     window.localStorage.clear();
@@ -164,38 +78,45 @@ $(document).ready(function(){
 <div class="container-fluid">
   <div class="col-sm-6">
     <h1 class="text-center" style="color: azure">Plan Your Run</h1>
-    <p class="text-center">Enter up to 5 songs below. You can either include seconds or round to the nearest minute.</p>
-    <p class="text-center">Your song history is available for reference if you leave the page.</p>
+    <p style="font-size: 100%" class="text-center">Enter up to 5 songs below. You can either include seconds or round to the nearest minute.</p>
+    <p style="font-size: 100%" class="text-center">Your song history is available for reference if you leave the page.</p>
   </div>
 
   <div class="col-sm-6">
-    <h2 class="text-center" style="color:azure">Search Songs</h2>
+    <h2 class="text-center" style="color:azure">Search Songs</a></h2>
     <gcse:search></gcse:search>  <!-- Google Custom Search -->
   </div>
 </div>
 
 <div class="container-fluid">
-  <div class="col-sm-6"> 
+  <div class="col-sm-4" "col-lg-2"> 
 
   <!-- Song Input 1 -->
 
     <div id="panel">
       <form id="form" action="#" method="POST">
         <h1 style="color:azure">1</h1>
-        <p><b>Please enter a song name:</b></p>
-        <input type="text" id="songInput" placeholder="Song Name" name="song" value=""/>
+        <p><b>Song name:</b></p>
+        <input type="text" class="form-control input-md" id="songInput" placeholder="Song Name" name="song" value=""/>
         <br></br>
 
-        <p><b>And now an artist:</b></p>
-        <input type="text" id="artistInput" placeholder="Artist Name" name="artist" value=""/></br>
+        <p><b>Artist name:</b></p>
+        <input type="text" class="form-control input-md" id="artistInput" placeholder="Artist Name" name="artist" value=""/>
         <br></br>
-
-        <p><b>And now a time:</b></p>
-        <input type="number" id="timeMinutes" placeholder="Minutes" name="minutes" value=""/>
-        <input type="number" id="timeSeconds" placeholder="Seconds" name="seconds" value=""> </br>
-
-        </br><input type="button" id="saveCookiesSong" value="Enter" onClick="userSong(); arrayTotal()"/>
-        <input type="button" class="flip" onclick="show()" value="Add another song">
+        
+        <p><b>Length of Song:</b></p>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" id="timeMinutes" placeholder="Minutes" name="minutes" value=""/>
+        </div>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" id="timeSeconds" placeholder="Seconds" name="seconds" value=""> 
+        <br></br>
+        </div>
+        
+        <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="saveCookiesSong" value="Enter" onClick="userSong(); arrayTotal(); drawChart(); showInfo()">Enter</button>
+        <button type="button" class="flip btn btn-primary" onclick="show()">Add another song</button>
+        </div>
       </form>
     </div>
 
@@ -204,22 +125,30 @@ $(document).ready(function(){
      <div id="panel2">
       <form id="form2" action="#" method="POST">
         <h1 style="color:azure">2</h1>
-        <p><b>Please enter a song name:</b></p>
-        <input type="text" placeholder="Song Name" id="songInput2" name="song" value=""/>
+        <p><b>Song name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Song Name" id="songInput2" name="song" value=""/>
         <br></br>
 
-        <p><b>And now an artist:</b></p>
-        <input type="text" placeholder="Artist Name" id="artistInput2" name="artist" value=""/></br>
+        <p><b>Artist name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Artist Name" id="artistInput2" name="artist" value=""/>
         <br></br>
     
-        <p><b>And now a time:</b></p>
-        <input type="number" placeholder="Minutes" id="timeMinutes2" name="minutes" value=""/>
-        <input type="number" id="timeSeconds2" placeholder="Seconds" name="seconds" value=""> </br>
-
-        </br><input type="button" id="saveCookiesSong2" value="Enter" onClick="userSong2(); arrayTotal()"/>
-        <input type="button" onClick="show2(); " value="go back">
-        <input type="button" onClick="show3()" value="add another song">
+        <p><b>Length of Song:</b></p>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" placeholder="Minutes" id="timeMinutes2" name="minutes" value=""/>
+        </div>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" placeholder="Seconds" id="timeSeconds2"  name="seconds" value=""/>
+        <br></br>
+        </div>
+        
+        <div class="btn-group">
+        <button type="button"  class="btn btn-primary" id="saveCookiesSong2"onClick="userSong2(); arrayTotal(); drawChart()">Enter</button>
+        <button type="button" class="btn btn-primary" onClick="show2()">Go Back</button>
+        <button type="button" class="btn btn-primary" onClick="show3()">Add Another Song</button>
+        </div>
       </form>
+
     </div>
 
 <!-- Song Input 3-->
@@ -227,21 +156,27 @@ $(document).ready(function(){
     <div id="panel3">
       <form id="form3" action="#" method="POST">
         <h1 style="color:azure">3</h1>
-        <p><b>Please enter a song name:</b></p>
-        <input type="text" placeholder="Song Name" id="songInput3" name="song" value=""/>
+        <p><b>Song name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Song Name" id="songInput3" name="song" value=""/>
         <br></br>
 
-        <p><b>And now an artist:</b></p>
-        <input type="text" placeholder="Artist Name" id="artistInput3" name="artist" value=""/></br>
+        <p><b>Artist name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Artist Name" id="artistInput3" name="artist" value=""/>
         <br></br>
   
-        <p><b>And now a time:</b></p>
-        <input type="number" placeholder="Minutes" id="timeMinutes3" name="minutes" value=""/>
-       <input type="number" id="timeSeconds3" placeholder="Seconds" name="seconds" value=""> </br>
-
-       </br><input type="button" id="saveCookiesSong3" value="Enter" onClick="userSong3(); arrayTotal()"/>
-       <input type= "button" onClick="show4()" value="go back">
-       <input type= "button" onClick="show5()" value="add another song">
+        <p><b>Length of Song:</b></p>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" placeholder="Minutes" id="timeMinutes3" name="minutes" value=""/>
+        </div>
+        <div class="col-sm-6">
+       <input type="number" class="form-control input-md" id="timeSeconds3" placeholder="Seconds" name="seconds" value="">
+       <br></br>
+       </div>
+       <div class="btn-group">
+       <button type="button" class="btn btn-primary" id="saveCookiesSong3" onClick="userSong3(); arrayTotal(); drawChart()">Enter</button>
+       <button type= "button" class="btn btn-primary" onClick="show4()">Go Back</button>
+       <button type= "button" class="btn btn-primary" onClick="show5()">Add Another Song</button>
+      </div>
       </form>
     </div>
 
@@ -250,20 +185,27 @@ $(document).ready(function(){
     <div id="panel4">
       <form id="form4" action="#" method="POST">
         <h1 style="color:azure">4</h1>
-        <p><b>Please enter a song name:</b></p>
-        <input type="text" placeholder="Song Name" id="songInput4" name="song" value=""/>
+        <p><b>Song name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Song Name" id="songInput4" name="song" value=""/>
         <br></br>
 
-        <p><b>And now an artist:</b></p>
-        <input type="text" placeholder="Artist Name" id="artistInput4" name="artist" value=""/></br>
+        <p><b>Artist name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Artist Name" id="artistInput4" name="artist" value=""/>
         <br></br>
       
-        <p><b>And now a time:</b></p>
-        <input type="number" placeholder="Minutes" id="timeMinutes4" name="minutes" value=""/>
-        <input type="number" id="timeSeconds4" placeholder="Seconds" name="seconds" value=""> </br>
-        </br><input type="button" id="saveCookiesSong4" value="Enter" onClick="userSong4(); arrayTotal()"/>
-        <input type="button" onClick="show6(); " value="go back">
-        <input type="button" onClick="show7()" value="add another song">
+        <p><b>Length of Song:</b></p>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" placeholder="Minutes" id="timeMinutes4" name="minutes" value=""/>
+        </div>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" id="timeSeconds4" placeholder="Seconds" name="seconds" value=""> 
+        <br></br>
+        </div>
+        <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="saveCookiesSong4" onClick="userSong4(); arrayTotal(); drawChart()">Enter</button>
+        <button type="button" class="btn btn-primary" onClick="show6()">Go Back</button>
+        <button type="button" class="btn btn-primary" onClick="show7()">Add Another Song</button>
+      </div>
       </form>
     </div>
 
@@ -272,20 +214,26 @@ $(document).ready(function(){
     <div id="panel5">
       <form id="form5" action="#" method="POST">
         <h1 style="color:azure">5</h1>
-        <p><b>Please enter a song name:</b></p>
-        <input type="text" placeholder="Song Name" id="songInput5" name="song" value=""/>
+        <p><b>Song name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Song Name" id="songInput5" name="song" value=""/>
         <br></br>
 
-        <p><b>And now an artist:</b></p>
-        <input type="text" placeholder="Artist Name" id="artistInput5" name="artist" value=""/></br>
+        <p><b>Artist name:</b></p>
+        <input type="text" class="form-control input-md" placeholder="Artist Name" id="artistInput5" name="artist" value=""/>
         <br></br>
           
-        <p><b>And now a time:</b></p>
-        <input type="number" placeholder="Minutes" id="timeMinutes5" name="minutes" value=""/>
-        <input type="number" id="timeSeconds5" placeholder="Seconds" name="seconds" value=""> </br>
-
-        </br><input type="button" id="saveCookiesSong5" value="Enter" onClick="userSong5(); arrayTotal()"/>
-        <input type="button" onClick="show8(); " value="go back">
+        <p><b>Length of Song:</b></p>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" placeholder="Minutes" id="timeMinutes5" name="minutes" value=""/>
+        </div>
+        <div class="col-sm-6">
+        <input type="number" class="form-control input-md" id="timeSeconds5" placeholder="Seconds" name="seconds" value="">
+        <br></br>
+        </div>
+        <div class="btn-group">
+        <button type="button" class="btn btn-primary" id="saveCookiesSong5" onClick="userSong5(); arrayTotal(); drawChart()">Enter</button>
+        <button type="button" class="btn btn-primary" onClick="show8()">Go Back</button>
+        </div>
       </form>
     </div>
 
@@ -301,37 +249,48 @@ $(document).ready(function(){
 
   <div class="col-sm-6">
     <h3 style="color:azure">Song History</h3>
-    <p id="total"></p>
-    <p id="total2"></p>
-    <p id="total3"></p>
-    <p id="total4"></p>
-    <p id="total5"></p>
-    <input type="button" value="clear" id="clearAllSongs">
-    <p id="arrayTotal"></p>
+<p id="total"></p>
+<p id="total2"></p>
+<p id="total3"></p>
+<p id="total4"></p>
+<p id="total5"></p>
+
+  <br></br>
+  <p id="arrayTotal"></p>
   </div>     
 </div>
 
 <div class="col-sm-12">
-  <br>
+  
 </div>
 
 <!-- Running information Input -->
 
-<div class="container-fluid">
-  <div class="col-sm-6">
+<div class="container-fluid" id="infoInput">
+  <hr>
+  <div class="col-sm-4" "col-lg-2">
     <p><b>Day of the week:</b></p>
-    <input id="daysInput" type="text">
-    <input type="submit" id="saveCookiesDay" value="Enter" onClick="getDays()">
+    <input id="daysInput" class="form-control input-md" type="text">
+    
+    <button type="button" class="btn btn-primary" id="saveCookiesDay" value="Enter" onClick="getDays()">Enter</button>
     <br></br>
-
-    <p><b>How many miles:</b></p>
-    <input id="milesInput" name="milesInput" type="number">
-    <input type="submit" id="saveCookiesMiles"  value="Enter" onClick="getMiles()">
+   
+    <div class="col-sm-6">
+    <p><b>Total Miles:</b></p>
+    <input id="milesInput" class="form-control input-md" name="milesInput" type="number">
+    <button type="button" class="btn btn-primary"  id="saveCookiesMiles" onClick="getMiles()">Enter</button>
     <br></br>
+    </div>
 
-    <p><b>Time ran total:</b></p>
-    <input id="minutesInput" type="number">
-    <input type="submit" id="saveCookiesMinutesTotal" value = "Enter" onClick= "getMiles()">
+    <div class="col-sm-6">
+    <p><b>Total minutes:</b></p>
+    <input id="minutesInput" class="form-control input-md" type="number">
+    <button type="button" class="btn btn-primary"  id="saveCookiesMinutesTotal" onClick= "getMiles()">Enter</button>
+    </div>
+
+    <div class="col-sm-12">
+        <button type="button" class="btn btn-success" onClick="subtractionCounter(); drawChart()">Add your Songs!</button>
+    </div>
   </div>
 
 <!-- Running Saved information -->
@@ -343,36 +302,42 @@ $(document).ready(function(){
     <p id="minutesOutput"></p>
     <p id="conversion"></p> 
     <p id="conversion2"></p>
-    <input type="button" id="clearAllInfo" value="clear">
   </div>
-</div>
 
-<div class="col-sm-12">
+
+  <div class="col-sm-12">
     <br>
-</div>
-
-<!-- All Songs added -->
-
-<div class="container-fluid">
-  <div class="form-group col-sm-6">
-    <input type="button" onClick="subtractionCounter()" value="Add it up!">
   </div>
 
-<!-- How many more songs needed -->
-
-  <div class="col-sm-6">
-    <h3 style="color:azure">Time Remaining</h3>
-    <p id="minus"></p>
-    <input type="button" id="clearAll" value ="clear all">
-  </div> 
 
 <!-- To See information clearly -->
 
-<div class="container-fluid">
-  <div class="col-sm-12">
-    <a href="Schedule.html"><button>Runify</button></a>
+  <div class=form-group "col-sm-12">
   </div>
 </div>
 
+
+
+<div class="container-fluid">
+  <hr></hr>
+  <div class="col-sm-12">
+    <h1 style= "color: azure">Song Layout Visualized</h1>
+  </div>
+  <div class="col-sm-6">
+    <div id="piechart"></div>
+  </div>
+  <div class="col-sm-6">
+  <!-- All Songs added -->
+    <h3 style="color:azure">Time Remaining</h3>
+    <p id="minus"></p>
+    <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="This will erase ALL of your stored data!" id="clearAll">Clear All</button> 
+  </div>
+  
+  <!-- How many more minutes needed -->
+  
+</div>
+
+
 </body>
 </html>
+

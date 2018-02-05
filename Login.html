@@ -1,0 +1,226 @@
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>Runify</title> 
+  <!-- All meta data -->   
+  <meta charset = "UTF-8">
+  <meta name="description" content="Caculate music times and the length of your runs to build a robust running schedule for you. It will also save any music you input, in case you forget the name.">
+  <meta name="keywords" content="Music, Running, Schedule">  
+  <meta name="author" content="Justin Nietzer"> 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0">
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Include Firebase Library -->
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script> <!--FireBase -->
+  <!-- Contacts Store JavaScript -->
+  <script src="Login.js"></script>
+  
+  
+  <link rel="stylesheet" type="text/css" href="project.css"> <!--External Style -->
+  <!-- Google fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+ 
+
+  <style type="text/css">
+
+    #contacts p, #contacts p.lead{ 
+      margin: 0; margin-top: 20px; margin-bottom: 10px
+     }
+
+    .authenticated{ 
+      display: block;
+    }
+    .unauthenticated{
+      display: none;
+    }
+    .modal-header:last-child{
+      border-bottom: 0;
+    }
+    
+    #parent {
+      padding: 5% 0;
+    }
+    
+    #child {
+      padding: 15% 0;
+    }
+    
+    #bg {
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%; z-index: -1;
+    }
+    
+    #bg img {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; min-width: 50%;min-height: 50%;
+    }
+    
+    @media screen and (max-width: 1024px) { /* Specific to this particular image */
+      img.bg {
+      left: 50%; margin-left: -512px;   /* 50% */
+        }
+      }
+
+    body {
+      background: url("Runner-Exercise-Run-Fitness.jpg") no-repeat center center fixed;
+    
+      background-size: cover; /* for IE9+, Safari 4.1+, Chrome 3.0+, Firefox 3.6+ */
+      -webkit-background-size: cover; /* for Safari 3.0 - 4.0 , Chrome 1.0 - 3.0 */
+      -moz-background-size: cover; /* optional for Firefox 3.6 */ 
+      -o-background-size: cover; /* for Opera 9.5 */
+      margin: 0; /* to remove the default white margin of body */
+      padding: 0; /* to remove the default white margin of body */
+      overflow: hidden;
+      }
+
+  </style>
+
+</head>
+
+<body>
+    
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+      <a class="navbar-brand" href="Login.html"><span class="glyphicon glyphicon-home"></span></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="About.html">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- Register and Login buttons. Will disappear when you login -->
+          <span class="userAuth authenticated">
+        <li><button type="button" class="btn btn-primary glyphicon glyphicon-user" data-toggle="modal" data-target="#registerModal">Register</button>
+        <button type="button" class="btn btn-success glyphicon glyphicon-log-in" data-toggle="modal" data-target="#loginModal"> Login</button>
+        </li>
+        </span>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+    
+    <!-- Main Home Page -->
+    <div id="parent jumbotron">
+      <div id="child" ><h1 style="color: azure">Runify</h1>
+        <p style="color: azure"><b>Using Music and Technology to create a more complete running experience.</b></p>  
+        <!--Button without logging in -->
+        <span class="userAuth authenticated">
+         <button type="button" onclick="warning()"class="btn btn-primary">Get Started!</button>
+        </span>
+        <!-- Button withn logging in -->
+        <div class="row unauthenticated">
+          <h3 style="color: azure">Welcome!</h3>
+          <button type="button" onclick="window.location.href='MusicPlaylistCookies.html'"class="btn btn-primary"><span class="glyphicon glyphicon-music"></span> Get Started!</button>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Register Pop-up window -->
+  <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="registerModalLabel">Register</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">First Name:</label>
+            <input type="text" class="form-control" id="registerFirstName">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Last Name:</label>
+            <input type="text" class="form-control" id="registerLastName">
+          </div>
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Email:</label>
+            <input type="text" class="form-control" id="registerEmail">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Password:</label>
+            <input type="password" class="form-control" id="registerPassword">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Confirm Password:</label>
+            <input type="password" class="form-control" id="registerConfirmPassword">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="doRegister">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Pop-up window -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="loginModalLabel">Login</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="recipient-name" class="control-label">Email:</label>
+            <input type="text" class="form-control" id="loginEmail">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="control-label">Password:</label>
+            <input type="password" class="form-control" id="loginPassword">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="doLogin">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Acknowledgement of Register and Login -->
+  <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="Message" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="messageModalLabel">Message</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="pre-auth">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+            <span class="">
+              <button type="submit" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
+              <button type="submit" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Login</button>
+            </span>
+          </div>
+          <div class="post-auth"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+</body>
+</html>
+

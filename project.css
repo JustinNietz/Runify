@@ -44,9 +44,8 @@ p {
 }
 
 body {
-  background-image: url("C:/Users/justi/Desktop/Project/Project/escheresque_ste.png");
-}
-
+  background: url("escheresque_ste.png");
+  }
 
 .jumbotron {
   background-color: rgb(107, 106, 110);
@@ -73,5 +72,8 @@ body {
 #panel5 {
   display: none;
 }
- 
 
+#infoInput {
+  display:none;
+}
+ 

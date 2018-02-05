@@ -1,3 +1,9 @@
+
+
+// All global variables that will be used constantly throughout each Function
+var song, song2, song3, song4, song5, artist, artist2, artist3, artist4, artist5, minutes, minutes2, minutes3, minutes4, minutes5, seconds, seconds2, seconds3, seconds4, seconds5;
+var sum, sumTotal, sumMinutes, sumSeconds,remaining, remainingMinutes, remainingSeconds, chartRemaining;
+
 //Constructor method to save all song input 
 function Song(name, artist, minutes, seconds){
   this.name= name;
@@ -78,6 +84,7 @@ function Song(name, artist, minutes, seconds){
 
 // Functions storing new objects created for every song entered (Max of 5)
 function userSong(){
+  
   let songObj= new Song(); //creates a new instances everytime
   songObj.setName(document.getElementById('songInput').value); // all entered information stored into id
   songObj.setArtist(document.getElementById('artistInput').value);
@@ -86,7 +93,10 @@ function userSong(){
   document.getElementById("total").innerHTML = songObj.showInfo();
 }
 
+
+
 function userSong2(){
+  
   let songObj= new Song();
   songObj.setName(document.getElementById('songInput2').value);
   songObj.setArtist(document.getElementById('artistInput2').value);
@@ -96,6 +106,7 @@ function userSong2(){
 }
 
 function userSong3(){
+ 
   let songObj= new Song();
   songObj.setName(document.getElementById('songInput3').value);
   songObj.setArtist(document.getElementById('artistInput3').value);
@@ -105,6 +116,7 @@ function userSong3(){
 }
 
 function userSong4(){
+
   let songObj= new Song();
   songObj.setName(document.getElementById('songInput4').value);
   songObj.setArtist(document.getElementById('artistInput4').value);
@@ -114,6 +126,7 @@ function userSong4(){
 }
 
 function userSong5(){
+ 
   let songObj= new Song();
   songObj.setName(document.getElementById('songInput5').value);
   songObj.setArtist(document.getElementById('artistInput5').value);
@@ -122,38 +135,41 @@ function userSong5(){
   document.getElementById("total5").innerHTML = songObj.showInfo();
 }
 
+function getValues() {
+  song = document.getElementById('songInput').value; // all entered information stored into id
+  artist = document.getElementById('artistInput').value;
+  minutes = document.getElementById("timeMinutes").value; //For each song inputed, variables for both minutes and seconds
+  seconds = document.getElementById("timeSeconds").value;
+
+  song2 = document.getElementById('songInput2').value; // all entered information stored into id
+  artist2 = document.getElementById('artistInput2').value;
+  minutes2 = document.getElementById("timeMinutes2").value;
+  seconds2 = document.getElementById("timeSeconds2").value;
+  
+  song3 = document.getElementById('songInput3').value; // all entered information stored into id
+  artist3 = document.getElementById('artistInput3').value;
+  minutes3 = document.getElementById("timeMinutes3").value;
+  seconds3 = document.getElementById("timeSeconds3").value;
+  
+  song4 = document.getElementById('songInput4').value; // all entered information stored into id
+  artist4 = document.getElementById('artistInput4').value;
+  minutes4 = document.getElementById("timeMinutes4").value;
+  seconds4 = document.getElementById("timeSeconds4").value;
+  
+  song5 = document.getElementById('songInput5').value; // all entered information stored into id
+  artist5 = document.getElementById('artistInput5').value;
+  minutes5 = document.getElementById("timeMinutes5").value;
+  seconds5 = document.getElementById("timeSeconds5").value;
+  }
+
 //To see the total minutes you have entered
 function arrayTotal(){ 
-  let nameMinutes = document.getElementById("timeMinutes"); //For each song inputed, variables for both minutes and seconds
-  let minutes = nameMinutes.value;
-  let nameSeconds = document.getElementById("timeSeconds");
-  let seconds = nameSeconds.value;
-
-  let nameMinutes2 = document.getElementById("timeMinutes2");
-  let minutes2 = nameMinutes2.value;
-  let nameSeconds2 = document.getElementById("timeSeconds2");
-  let seconds2 = nameSeconds2.value;
-
-  let nameMinutes3 = document.getElementById("timeMinutes3");
-  let minutes3 = nameMinutes3.value;
-  let nameSeconds3 = document.getElementById("timeSeconds3");
-  let seconds3 = nameSeconds3.value;
-
-  let nameMinutes4 = document.getElementById("timeMinutes4");
-  let minutes4 = nameMinutes4.value;
-  let nameSeconds4 = document.getElementById("timeSeconds4");
-  let seconds4 = nameSeconds4.value;
-
-  let nameMinutes5 = document.getElementById("timeMinutes5");
-  let minutes5 = nameMinutes5.value;
-  let nameSeconds5 = document.getElementById("timeSeconds5");
-  let seconds5 = nameSeconds5.value;
-
-  let total = (Number(minutes) * 60) + Number(seconds); // Converting all minutes into seconds plus extra seconds inputed
-  let total2 = (Number(minutes2) * 60) + Number(seconds2);
-  let total3 = (Number(minutes3) * 60) + Number(seconds3);
-  let total4 = (Number(minutes4) * 60) + Number(seconds4);
-  let total5 = (Number(minutes5) * 60) + Number(seconds5);
+ getValues(); 
+  var total = (Number(minutes) * 60) + Number(seconds); // Converting all minutes into seconds plus extra seconds inputed
+  var total2 = (Number(minutes2) * 60) + Number(seconds2);
+  var total3 = (Number(minutes3) * 60) + Number(seconds3);
+  var total4 = (Number(minutes4) * 60) + Number(seconds4);
+  var total5 = (Number(minutes5) * 60) + Number(seconds5);
 
   let storedTimes = []; //Pushing all seconds into an array with length of 5
     storedTimes.push(total);
@@ -170,46 +186,21 @@ function arrayTotal(){
   if(minutes >= 25 || minutes2 >= 25 || minutes3 >= 25 || minutes4 >= 25 || minutes5 >= 25){ // Printing into unkown if the individual song length is too long
     document.getElementById("arrayTotal").innerHTML = "unknown";
   } else {
-    document.getElementById("arrayTotal").innerHTML = "total time: " + sumMinutes + " minutes " + sumSeconds + " seconds.";
+    document.getElementById("arrayTotal").innerHTML = "Total time: " + sumMinutes + " minutes " + sumSeconds + " seconds";
   }
 
 };
 
 //Mathematical function  
 function subtractionCounter(){
-  let nameMilesTotal = document.getElementById("minutesInput"); //For total time ran
-  let milesTotal = Number(nameMilesTotal.value);
+  var nameMilesTotal = document.getElementById("minutesInput"); //For total time ran
+  var milesTotal = Number(nameMilesTotal.value);
 
-  let nameMinutes = document.getElementById("timeMinutes"); //For each song inputed, variables for both minutes and seconds
-  let minutes = nameMinutes.value;
-  let nameSeconds = document.getElementById("timeSeconds");
-  let seconds = nameSeconds.value;
-
-  let nameMinutes2 = document.getElementById("timeMinutes2");
-  let minutes2 = nameMinutes2.value;
-  let nameSeconds2 = document.getElementById("timeSeconds2");
-  let seconds2 = nameSeconds2.value;
-
-  let nameMinutes3 = document.getElementById("timeMinutes3");
-  let minutes3 = nameMinutes3.value;
-  let nameSeconds3 = document.getElementById("timeSeconds3");
-  let seconds3 = nameSeconds3.value;
-
-  let nameMinutes4 = document.getElementById("timeMinutes4");
-  let minutes4 = nameMinutes4.value;
-  let nameSeconds4 = document.getElementById("timeSeconds4");
-  let seconds4 = nameSeconds4.value;
-
-  let nameMinutes5 = document.getElementById("timeMinutes5");
-  let minutes5 = nameMinutes5.value;
-  let nameSeconds5 = document.getElementById("timeSeconds5");
-  let seconds5 = nameSeconds5.value;
-
-  let total = (Number(minutes) * 60) + Number(seconds); // Converting all minutes into seconds plus extra seconds inputed
-  let total2 = (Number(minutes2) * 60) + Number(seconds2);
-  let total3 = (Number(minutes3) * 60) + Number(seconds3);
-  let total4 = (Number(minutes4) * 60) + Number(seconds4);
-  let total5 = (Number(minutes5) * 60) + Number(seconds5);
+  var total = (Number(minutes) * 60) + Number(seconds); // Converting all minutes into seconds plus extra seconds inputed
+  var total2 = (Number(minutes2) * 60) + Number(seconds2);
+  var total3 = (Number(minutes3) * 60) + Number(seconds3);
+  var total4 = (Number(minutes4) * 60) + Number(seconds4);
+  var total5 = (Number(minutes5) * 60) + Number(seconds5);
 
   let storedTimes = []; //Pushing all seconds into an array with length of 5
     storedTimes.push(total);
@@ -218,19 +209,21 @@ function subtractionCounter(){
     storedTimes.push(total4);
     storedTimes.push(total5);
 
-  const sum= storedTimes.reduce((a, b) => a + b); // Adding all numbers in the array together in seconds
-  let sumTotal = (sum / 60).toFixed(2); // Dividing seconds by 60 with a rounded decimal to the hundreths place
-  let sumMinutes = Math.floor(sum / 60); // Converting total time into minutes
-  let sumSeconds = sum % 60; // Converting total time into seconds
+  sum = storedTimes.reduce((a, b) => a + b); // Adding all numbers in the array together in seconds
+  sumTotal = (sum / 60).toFixed(2); // Dividing seconds by 60 with a rounded decimal to the hundreths place
+  sumMinutes = Math.floor(sum / 60); // Converting total time into minutes
+  sumSeconds = sum % 60; // Converting total time into seconds
 
-  let remaining = Number(milesTotal - sumTotal).toFixed(2); //Same converstion but finding the difference between the miles total and song length totals 
-  let remainingMinutes = Math.floor(remaining);
-  let remainingSeconds = Math.floor((remaining - remainingMinutes) * 60);
+  remaining = Number(milesTotal - sumTotal).toFixed(2); //Same converstion but finding the difference between the miles total and song length totals 
+  remainingMinutes = Math.floor(remaining);
+  remainingSeconds = Math.floor((remaining - remainingMinutes) * 60);
 
   if (sumTotal < milesTotal){ //Printing out different statements for if you need more songs verses if you have too many
-    document.getElementById("minus").innerHTML = remainingMinutes + " minutes " + remainingSeconds + " seconds remaining. Add more?";
+    document.getElementById("minus").innerHTML = remainingMinutes + " minutes " + remainingSeconds + " seconds remaining.";
   } else if(sumTotal > milesTotal) {
     document.getElementById("minus").innerHTML = remainingMinutes + " minutes " + remainingSeconds + " seconds over. "  + "Need to delete a song or two!";
+  } else {
+    document.getElementById("minus").innerHTML = "Completed!";
   }
 
 };
@@ -263,49 +256,7 @@ function getMiles(){
 
   document.getElementById("conversion2").innerHTML = "You will run each mile in " + sumMinutes + " minutes " + sumSeconds + " seconds.";
 }
-
-// JQuery for having different song choice buttons
-function show() {
-  document.getElementById("panel").style.display = "none"; // hides the panel
-  document.getElementById("panel2").style.display = "block"; // shows the panel
   
-}
-  
-function show2(){
-  document.getElementById("panel").style.display = "block";
-  document.getElementById("panel2").style.display = "none";
-}
-  
-function show3(){
-  document.getElementById("panel2").style.display = "none";
-  document.getElementById("panel3").style.display = "block";
-}
-  
-function show4(){
-  document.getElementById("panel2").style.display = "block";
-  document.getElementById("panel3").style.display = "none";
-}
-  
-function show5(){
-  document.getElementById("panel3").style.display = "none";
-  document.getElementById("panel4").style.display = "block";
-}
-
-function show6(){
-  document.getElementById("panel3").style.display = "block";
-  document.getElementById("panel4").style.display = "none";
-}
-
-function show7(){
-  document.getElementById("panel4").style.display = "none";
-  document.getElementById("panel5").style.display = "block";
-}
-    
-function show8(){
-  document.getElementById("panel4").style.display = "block";
-  document.getElementById("panel5").style.display = "none";
-}
-    
 // For Google Custom Search;
 (function() {
   var cx = '008029922266576954062:dsgwz8rzzrk';
@@ -317,3 +268,39 @@ function show8(){
   s.parentNode.insertBefore(gcse, s);
 })();
 
+// For Google Pie Chart
+
+  // Draw the chart and set the chart values
+  function drawChart() {
+    chartRemaining = (remainingMinutes * 60) + remainingSeconds;
+    let total = (Number(minutes) * 60) + Number(seconds); // Converting all minutes into seconds plus extra seconds inputed
+    let total2 = (Number(minutes2) * 60) + Number(seconds2);
+    let total3 = (Number(minutes3) * 60) + Number(seconds3);
+    let total4 = (Number(minutes4) * 60) + Number(seconds4);
+    let total5 = (Number(minutes5) * 60) + Number(seconds5);
+
+
+  var data = google.visualization.arrayToDataTable([
+  ['Songs', 'Length(seconds)'],
+  [song, total],
+  [song2, total2],
+  [song3, total3],
+  [song4, total4],
+  [song5, total5],
+  ['Remaining', chartRemaining]
+
+  ]);
+
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'allowHtml': true, 'legend': {textStyle: {color: 'white', fontSize: 12}}, 'width':400, 'height':300, 'backgroundColor': 'transparent', 'is3D':true};
+  
+    //Format numbers to include suffix "seconds"
+    var formatter = new google.visualization.NumberFormat(
+      {suffix: ' seconds', fractionDigits: 0});
+    formatter.format(data, 1);
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+  }
